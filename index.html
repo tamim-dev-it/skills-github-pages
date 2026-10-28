@@ -1,0 +1,743 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="Tamim's personal portfolio — code, networks, and cybersecurity.">
+    <title>Tamim / Developer & Security Learner</title>
+    <style>
+        :root {
+            --bg: #f5f4ef;
+            --ink: #20251f;
+            --sub: #70766a;
+            --line: #d9ddd1;
+            --green: #d5fa77;
+            --card: #fffefa
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 100px
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--ink);
+            font: 15px/1.65 Arial, Helvetica, sans-serif
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none
+        }
+
+        button {
+            font: inherit
+        }
+
+        main,
+        header,
+        footer {
+            max-width: 1180px;
+            margin: auto;
+            padding: 0 42px
+        }
+
+        header {
+            height: 104px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 23px;
+            letter-spacing: -1px
+        }
+
+        .logo span {
+            color: #6f9240
+        }
+
+        nav {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+            font-size: 13px
+        }
+
+        .nav-contact {
+            border: 1px solid var(--ink);
+            border-radius: 30px;
+            padding: 9px 18px
+        }
+
+        .hero {
+            padding: 66px 0 70px;
+            display: grid;
+            grid-template-columns: 1.15fr 1fr;
+            gap: 65px;
+            align-items: center
+        }
+
+        .eyebrow {
+            font: 11px/1.5 monospace;
+            text-transform: uppercase;
+            letter-spacing: 1.6px;
+            display: flex;
+            align-items: center;
+            gap: 9px
+        }
+
+        .dot {
+            height: 7px;
+            width: 7px;
+            background: #77a940;
+            border-radius: 50%;
+            display: inline-block
+        }
+
+        .hero h1 {
+            font-size: clamp(56px, 6.5vw, 82px);
+            line-height: 1.04;
+            letter-spacing: -5px;
+            font-weight: 500;
+            margin: 25px 0
+        }
+
+        .hero h1 em {
+            font-family: Georgia, serif;
+            font-weight: 400
+        }
+
+        .hero p {
+            max-width: 405px;
+            color: var(--sub);
+            font-size: 15px;
+            line-height: 1.8
+        }
+
+        .actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 30px
+        }
+
+        .button {
+            padding: 13px 23px;
+            border: 1px solid var(--ink);
+            border-radius: 7px;
+            font-size: 12px;
+            display: inline-flex;
+            gap: 25px;
+            align-items: center
+        }
+
+        .primary {
+            background: var(--ink);
+            color: white
+        }
+
+        .location {
+            font: 11px monospace;
+            color: var(--sub);
+            margin-top: 35px
+        }
+
+        .visual {
+            height: 390px;
+            background: #e8ebdf;
+            border: 1px solid #d6dccb;
+            border-radius: 15px;
+            position: relative;
+            display: grid;
+            place-items: center;
+            overflow: hidden;
+            background-image: radial-gradient(#b4bca6 .8px, transparent .8px);
+            background-size: 17px 17px
+        }
+
+        .orbit {
+            position: absolute;
+            border: 1px solid #bac5a6;
+            border-radius: 50%;
+            width: 295px;
+            height: 295px
+        }
+
+        .orbit:after {
+            content: '';
+            position: absolute;
+            inset: 27px;
+            border: 1px solid #c9d1bb;
+            border-radius: 50%
+        }
+
+        .terminal {
+            position: relative;
+            background: #222a23;
+            color: #eaf2df;
+            width: 88%;
+            border-radius: 10px;
+            box-shadow: 12px 20px 35px #27331b26;
+            transform: rotate(-3deg);
+            font: 12px/2 monospace
+        }
+
+        .terminal-head {
+            padding: 12px 18px;
+            border-bottom: 1px solid #41493d;
+            display: flex;
+            gap: 6px;
+            align-items: center
+        }
+
+        .terminal-head i {
+            width: 7px;
+            height: 7px;
+            background: #687260;
+            border-radius: 50%
+        }
+
+        .terminal-head small {
+            margin: auto;
+            color: #a9b39f;
+            font-size: 10px
+        }
+
+        .code {
+            padding: 21px 25px 28px
+        }
+
+        .code .muted {
+            color: #83947c
+        }
+
+        .code .lime {
+            color: #c6f284
+        }
+
+        .code .blue {
+            color: #9cc9bd
+        }
+
+        .cursor {
+            display: inline-block;
+            background: #c6f284;
+            width: 7px;
+            height: 13px;
+            vertical-align: middle
+        }
+
+        .float {
+            position: absolute;
+            right: 14px;
+            bottom: 23px;
+            transform: rotate(4deg);
+            background: var(--green);
+            border: 1px solid #a8c75d;
+            padding: 9px 16px;
+            border-radius: 5px;
+            font: 11px monospace
+        }
+
+        .strip {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+            padding: 23px 0;
+            font: 12px monospace;
+            color: #676e60
+        }
+
+        .strip span:first-child {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #848b7b
+        }
+
+        .section {
+            padding: 66px 0
+        }
+
+        .section-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            margin-bottom: 25px
+        }
+
+        .section h2 {
+            font-size: 32px;
+            letter-spacing: -1.2px;
+            font-weight: 500;
+            margin: 10px 0 0
+        }
+
+        .section-top p {
+            font-size: 12px;
+            color: var(--sub);
+            margin: 0
+        }
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px
+        }
+
+        .project {
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            background: var(--card);
+            overflow: hidden;
+            transition: transform .2s
+        }
+
+        .project:hover {
+            transform: translateY(-5px)
+        }
+
+        .project-art {
+            height: 165px;
+            background: #e7ecde;
+            padding: 25px;
+            display: grid;
+            place-items: center
+        }
+
+        .mini-window {
+            width: 100%;
+            max-width: 220px;
+            background: #f9fbf5;
+            border: 1px solid #bec8b1;
+            border-radius: 5px;
+            padding: 13px;
+            box-shadow: 7px 7px 0 #cad5bd;
+            font: 10px monospace
+        }
+
+        .window-line {
+            height: 6px;
+            background: #d5dfca;
+            margin: 7px 0;
+            border-radius: 3px
+        }
+
+        .window-line.short {
+            width: 65%;
+            background: #9bb86f
+        }
+
+        .diagram {
+            display: flex;
+            gap: 16px;
+            align-items: center
+        }
+
+        .node {
+            border: 1px solid #879b76;
+            padding: 12px;
+            background: #f6f9f1;
+            border-radius: 6px;
+            font: 18px monospace
+        }
+
+        .link {
+            width: 23px;
+            height: 1px;
+            background: #879b76
+        }
+
+        .project:nth-child(2) .project-art {
+            background: #e9e8e1
+        }
+
+        .project:nth-child(3) .project-art {
+            background: #e4eae9
+        }
+
+        .project-body {
+            padding: 20px
+        }
+
+        .project-body small {
+            font: 9px monospace;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--sub)
+        }
+
+        .project h3 {
+            margin: 8px 0;
+            font-size: 18px;
+            font-weight: 500;
+            letter-spacing: -.4px
+        }
+
+        .project p {
+            color: var(--sub);
+            font-size: 12px;
+            line-height: 1.7;
+            margin-bottom: 18px
+        }
+
+        .tags {
+            display: flex;
+            gap: 6px
+        }
+
+        .tags span {
+            font: 9px monospace;
+            border: 1px solid var(--line);
+            border-radius: 4px;
+            padding: 3px 7px
+        }
+
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 1.3fr;
+            gap: 80px;
+            border-top: 1px solid var(--line)
+        }
+
+        .about p {
+            color: var(--sub);
+            font-size: 14px;
+            margin: 0 0 18px
+        }
+
+        .about strong {
+            color: var(--ink);
+            font-weight: 400
+        }
+
+        .details {
+            display: flex;
+            gap: 40px;
+            font: 11px monospace;
+            margin-top: 25px
+        }
+
+        .details span {
+            display: block;
+            color: var(--sub);
+            font-size: 9px;
+            margin-bottom: 5px
+        }
+
+        .contact {
+            background: #e9eedf;
+            border: 1px solid #d7dfc9;
+            border-radius: 12px;
+            padding: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 58px
+        }
+
+        .contact h2 {
+            font-size: 30px;
+            font-weight: 500;
+            letter-spacing: -1px;
+            margin: 0
+        }
+
+        .contact p {
+            font-size: 13px;
+            color: var(--sub);
+            margin: 7px 0 0
+        }
+
+        .contact button {
+            cursor: pointer;
+            background: var(--ink);
+            color: white
+        }
+
+        footer {
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid var(--line);
+            padding-top: 22px;
+            padding-bottom: 28px;
+            font: 10px monospace;
+            color: var(--sub)
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--ink);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 8px;
+            max-width: 90%;
+            font-size: 13px;
+            z-index: 20
+        }
+
+        .theme {
+            background: none;
+            border: 0;
+            cursor: pointer;
+            font-size: 18px
+        }
+
+        body.dark {
+            --bg: #181e19;
+            --ink: #eef3e8;
+            --sub: #abb5a2;
+            --line: #3a4536;
+            --card: #222b22
+        }
+
+        body.dark .primary,
+        body.dark .contact button {
+            background: #d5fa77;
+            color: #20251f
+        }
+
+        body.dark .contact {
+            background: #293524;
+            border-color: #46563b
+        }
+
+        body.dark .visual {
+            filter: brightness(.8)
+        }
+
+        a:focus-visible,
+        button:focus-visible {
+            outline: 3px solid #85aa49;
+            outline-offset: 5px
+        }
+
+        @media(max-width:760px) {
+
+            main,
+            header,
+            footer {
+                padding-left: 22px;
+                padding-right: 22px
+            }
+
+            header {
+                height: 80px
+            }
+
+            nav {
+                gap: 16px
+            }
+
+            nav .nav-contact {
+                display: none
+            }
+
+            .hero {
+                padding: 35px 0 45px;
+                grid-template-columns: 1fr;
+                gap: 35px
+            }
+
+            .hero h1 {
+                font-size: 64px;
+                letter-spacing: -3px
+            }
+
+            .visual {
+                height: 330px
+            }
+
+            .strip {
+                flex-wrap: wrap;
+                gap: 18px;
+                justify-content: start
+            }
+
+            .strip span:first-child {
+                width: 100%
+            }
+
+            .projects {
+                grid-template-columns: 1fr
+            }
+
+            .project-art {
+                height: 190px
+            }
+
+            .section {
+                padding: 43px 0
+            }
+
+            .section-top {
+                align-items: start;
+                gap: 20px
+            }
+
+            .section-top p {
+                max-width: 140px
+            }
+
+            .about {
+                grid-template-columns: 1fr;
+                gap: 24px
+            }
+
+            .contact {
+                padding: 25px;
+                display: block
+            }
+
+            .contact .button {
+                margin-top: 20px
+            }
+
+            footer {
+                gap: 18px;
+                font-size: 9px
+            }
+
+            .details {
+                gap: 22px
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header><a class="logo" href="#">tamim<span>.</span></a>
+        <nav aria-label="Main navigation"><a href="#work">Work</a><a href="#about">About</a><a class="nav-contact"
+                href="#contact">Let's connect ↗</a><button class="theme" aria-label="Toggle dark mode"
+                title="Toggle dark mode">◐</button></nav>
+    </header>
+    <main>
+        <section class="hero">
+            <div>
+                <div class="eyebrow"><span class="dot"></span>Learning. Building. Securing.</div>
+                <h1>Hi, I'm Tamim.<br>I build with<br><em>curiosity.</em></h1>
+                <p>An IT student exploring the intersection of software, networks, and cybersecurity. Turning what I
+                    learn into things that work.</p>
+                <div class="actions"><a class="button primary" href="#work">Explore my work <span>↗</span></a><a
+                        class="button" href="#about">A little about me <span>↓</span></a></div>
+                <div class="location">◎ &nbsp;Based in Osaka, Japan · Originally from Bangladesh</div>
+            </div>
+            <div class="visual" aria-label="Decorative code terminal">
+                <div class="orbit"></div>
+                <div class="terminal">
+                    <div class="terminal-head"><i></i><i></i><i></i><small>tamim — ~/portfolio</small></div>
+                    <div class="code"><span class="muted">// a little about me</span><br><span class="lime">const</span>
+                        developer = {<br>&nbsp; name: <span class="blue">"Tamim"</span>,<br>&nbsp; focus: [<span
+                            class="blue">"code", "security"</span>],<br>&nbsp; mindset: <span class="blue">"always
+                            learning"</span><br>};<br><br><span class="lime">→</span> building the next chapter<span
+                            class="cursor"></span></div>
+                </div>
+                <div class="float">&lt;/&gt; one commit at a time</div>
+            </div>
+        </section>
+        <div class="strip"><span>My current toolkit</span><span>Python</span><span>Java</span><span>SQL /
+                MariaDB</span><span>Linux</span><span>Networking</span><span>Git</span></div>
+        <section class="section" id="work">
+            <div class="section-top">
+                <div>
+                    <div class="eyebrow">01 / Learning in practice</div>
+                    <h2>On my workbench.</h2>
+                </div>
+                <p>Coursework, experiments, and areas I'm exploring.</p>
+            </div>
+            <div class="projects">
+                <article class="project">
+                    <div class="project-art">
+                        <div class="mini-window">▤ &nbsp; user_management<div class="window-line short"></div>
+                            <div class="window-line"></div>
+                            <div class="window-line"></div>
+                            <div style="border:1px solid #bdc9af;padding:6px;margin-top:12px;color:#63813c">● &nbsp;
+                                Profile / authentication</div>
+                        </div>
+                    </div>
+                    <div class="project-body"><small>01 / Database coursework</small>
+                        <h3>User management system</h3>
+                        <p>Exploring authentication, profile data, and relational database design through hands-on
+                            coursework.</p>
+                        <div class="tags"><span>Python</span><span>MariaDB</span><span>SQL</span></div>
+                    </div>
+                </article>
+                <article class="project">
+                    <div class="project-art">
+                        <div class="diagram">
+                            <div class="node">⌘</div>
+                            <div class="link"></div>
+                            <div class="node">⌁</div>
+                            <div class="link"></div>
+                            <div class="node">▣</div>
+                        </div>
+                    </div>
+                    <div class="project-body"><small>02 / Security learning</small>
+                        <h3>Behind the network</h3>
+                        <p>Learning how systems communicate, investigating logs, and building a foundation in network
+                            security.</p>
+                        <div class="tags"><span>Networks</span><span>Linux</span><span>Security</span></div>
+                    </div>
+                </article>
+                <article class="project">
+                    <div class="project-art">
+                        <div class="mini-window"
+                            style="background:#24322f;color:#c7e3d2;border-color:#526d61;box-shadow:7px 7px 0 #c0cec7">$
+                            python learn.py<br><span style="color:#8da99b">&gt; read · build ·
+                                repeat</span><br>██████████░░ &nbsp;learning...<br><span style="color:#d5fa77">✓ another
+                                idea, made real</span></div>
+                    </div>
+                    <div class="project-body"><small>03 / Programming practice</small>
+                        <h3>Small tools, steady progress</h3>
+                        <p>Practicing programming with Python and Java, from data handling to small desktop interfaces.
+                        </p>
+                        <div class="tags"><span>Python</span><span>Java</span><span>Tkinter</span></div>
+                    </div>
+                </article>
+            </div>
+        </section>
+        <section class="section about" id="about">
+            <div>
+                <div class="eyebrow">02 / The person behind the code</div>
+                <h2>A learner first.<br>A builder, always.</h2>
+            </div>
+            <div>
+                <p>I'm <strong>Tamim Md Ferdaus Islam</strong>, an IT student in Osaka with a focus on networking and
+                    cybersecurity.</p>
+                <p>My journey brought me from Bangladesh to Japan, and from studying accounting to exploring technology.
+                    I enjoy breaking down complex problems and learning by building, one small project at a time.</p>
+                <div class="details">
+                    <div><span>FOCUS</span>Network & security</div>
+                    <div><span>LANGUAGES</span>বাংলা · 日本語 · English</div>
+                    <div><span>APPROACH</span>Learn by doing</div>
+                </div>
+            </div>
+        </section>
+        <section class="contact" id="contact">
+            <div>
+                <div class="eyebrow" style="margin-bottom:8px">03 / What's next?</div>
+                <h2>Good things start with a hello.</h2>
+                <p>Interested in code, cybersecurity, or learning together? Let's connect.</p>
+            </div><button class="button" id="connect">Connect on GitHub <span>↗</span></button>
+        </section>
+    </main>
+    <footer><span>© <span id="year"></span> Tamim Md Ferdaus Islam</span><span>Built with curiosity & a little caffeine.
+            &nbsp; ↑ <a href="#">Back to top</a></span></footer>
+    <script>document.getElementById('year').textContent = new Date().getFullYear(); const theme = document.querySelector('.theme'); if (localStorage.getItem('tamim-theme') === 'dark') document.body.classList.add('dark'); theme.onclick = () => { document.body.classList.toggle('dark'); localStorage.setItem('tamim-theme', document.body.classList.contains('dark') ? 'dark' : 'light') }; document.getElementById('connect').onclick = () => { let t = document.querySelector('.toast'); if (t) t.remove(); t = document.createElement('div'); t.className = 'toast'; t.setAttribute('role', 'status'); t.textContent = 'GitHub profile coming soon — add your profile URL to personalize this button.'; document.body.append(t); setTimeout(() => t.remove(), 5500) };</script>
+</body>
+
+</html>
